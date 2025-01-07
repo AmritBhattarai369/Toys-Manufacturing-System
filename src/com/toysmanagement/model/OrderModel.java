@@ -10,14 +10,16 @@ public class OrderModel {
     private String ordCust;
     private String ordType;
     private String ordItems;
+    private int ordQuantity;
     private String ordSuppliers;
     private int ordCPU;
     
-    public OrderModel(int ordId, String ordCust, String ordType, String ordItems, String ordSuppliers, int ordCPU) {
+    public OrderModel(int ordId, String ordCust, String ordType, String ordItems,int ordQuantity ,String ordSuppliers, int ordCPU) {
         this.ordId = ordId;
         this.ordCust = ordCust;
         this.ordType = ordType;
         this.ordItems = ordItems;
+        this.ordQuantity = ordQuantity;
         this.ordSuppliers = ordSuppliers;
         this.ordCPU = ordCPU;
     }
@@ -48,6 +50,14 @@ public class OrderModel {
     
     public String getOrdItems() {
         return ordItems;
+    }
+    public int getOrdQuantity()
+    {
+        return ordQuantity;
+    }
+    public void setOrdQuantity(int ordQuantity)
+    {
+        this.ordQuantity = ordQuantity;
     }
     
     public void setOrdItems(String ordItems) {

@@ -6,6 +6,7 @@ package com.toysmanagement.view;
 
 /**
  *
+ * @LMUID 23048624
  * @author amritbhattarai
  */
 public class WelcomePage extends javax.swing.JFrame {
@@ -92,6 +93,8 @@ public class WelcomePage extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNextActionPerformed
+        this.setVisible(false);
+        new ProductsPage().setVisible(true);
         // TODO add your handling code here:
     }//GEN-LAST:event_btnNextActionPerformed
 

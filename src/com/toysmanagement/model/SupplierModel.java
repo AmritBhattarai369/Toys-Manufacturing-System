@@ -9,11 +9,11 @@ public class SupplierModel {
     private int suppId;
     private String suppName;
     private String suppAddress;
-    private int suppContactNum;
+    private String suppContactNum;
     private String suppContactPerson;
     private String suppProduct;
 
-    public SupplierModel(int suppId, String suppName, String suppAddress, int suppContactNum, String suppContactPerson, String suppProduct) {
+    public SupplierModel(int suppId, String suppName, String suppAddress, String suppContactNum, String suppContactPerson, String suppProduct) {
         this.suppId = suppId;
         this.suppName = suppName;
         this.suppAddress = suppAddress;
@@ -46,11 +46,11 @@ public class SupplierModel {
         this.suppAddress = suppAddress;
     }
 
-    public int getSuppContactNum() {
+    public String getSuppContactNum() {
         return suppContactNum;
     }
 
-    public void setSuppContactNum(int suppContactNum) {
+    public void setSuppContactNum(String suppContactNum) {
         this.suppContactNum = suppContactNum;
     }
 

@@ -1,11 +1,10 @@
 package com.toysmanagement.view;
 
-
 import javax.swing.JOptionPane;
 
 
 /**
- *
+ * @LMUID 23048624
  * @author amritbhattarai
  */
 public class LoginPageMain extends javax.swing.JFrame {
@@ -128,13 +127,13 @@ public class LoginPageMain extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Please enter username and password.", "Login error", JOptionPane.ERROR_MESSAGE);
         }
         else if(!username.equals("admin")||!password.equals("admin")){
-            JOptionPane.showMessageDialog(null, "Username and Password doesn't", "Login error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Username and Password doesn't match", "Login error", JOptionPane.ERROR_MESSAGE);
         }
         else {
         this.setVisible(false);
         new WelcomePage().setVisible(true);
         }
-    }
+    
         // TODO add your handling code here:
     }//GEN-LAST:event_btnLoginActionPerformed
 

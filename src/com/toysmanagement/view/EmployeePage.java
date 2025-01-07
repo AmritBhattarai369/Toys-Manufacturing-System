@@ -11,8 +11,10 @@ import javax.swing.*;
 
 /**
  *
+ *@LMUID 23048624
  * @author amritbhattarai
  */
+ 
 public class EmployeePage extends javax.swing.JFrame {
 
     /**
@@ -27,6 +29,7 @@ public class EmployeePage extends javax.swing.JFrame {
     public EmployeePage() {
         initComponents(); 
         validation = new Validation();
+        addInitialEmployeeData();
         
     }
     
@@ -68,6 +71,51 @@ public class EmployeePage extends javax.swing.JFrame {
         });
     }
 }
+    private void addInitialEmployeeData()
+    {
+        EmployeeModel employee1 = new EmployeeModel(1, "John Doe", "123 Elm St, Springfield", "123-456-7890", "Manager", "Sales");
+        EmployeeModel employee2 = new EmployeeModel(2, "Jane Smith", "456 Oak St, Springfield", "987-654-3210", "Team Lead", "Marketing");
+        EmployeeModel employee3 = new EmployeeModel(3, "Alice Johnson", "789 Pine St, Springfield", "456-789-0123", "Software Engineer", "IT");
+        EmployeeModel employee4 = new EmployeeModel(4, "Mike Brown", "321 Maple St, Springfield", "654-321-9870", "HR Specialist", "Human Resources");
+        EmployeeModel employee5 = new EmployeeModel(5, "Laura Wilson", "654 Birch St, Springfield", "321-654-0987", "Finance Analyst", "Finance");
+        EmployeeModel employee6 = new EmployeeModel(6, "James White", "987 Cedar St, Springfield", "789-012-3456", "Project Manager", "Operations");
+        EmployeeModel employee7 = new EmployeeModel(7, "Emma Green", "159 Walnut St, Springfield", "012-345-6789", "Graphic Designer", "Creative");
+        EmployeeModel employee8 = new EmployeeModel(8, "Oliver Taylor", "753 Willow St, Springfield", "345-678-9012", "Content Writer", "Marketing");
+        EmployeeModel employee9 = new EmployeeModel(9, "Sophia Moore", "357 Chestnut St, Springfield", "678-901-2345", "Accountant", "Finance");
+        EmployeeModel employee10 = new EmployeeModel(10, "Liam Harris", "951 Redwood St, Springfield", "901-234-5678", "System Admin", "IT");
+        EmployeeModel employee11 = new EmployeeModel(11, "Mason Martin", "159 Sycamore St, Springfield", "234-567-8901", "Operations Coordinator", "Operations");
+        EmployeeModel employee12 = new EmployeeModel(12, "Isabella Lee", "357 Spruce St, Springfield", "567-890-1234", "Marketing Specialist", "Marketing");
+        EmployeeModel employee13 = new EmployeeModel(13, "Elijah Walker", "753 Palm St, Springfield", "890-123-4567", "Sales Associate", "Sales");
+        EmployeeModel employee14 = new EmployeeModel(14, "Charlotte Hall", "951 Poplar St, Springfield", "123-567-8904", "HR Manager", "Human Resources");
+        EmployeeModel employee15 = new EmployeeModel(15, "Ethan Young", "357 Fir St, Springfield", "567-234-6789", "UI/UX Designer", "Creative");
+        EmployeeModel employee16 = new EmployeeModel(16, "Amelia King", "159 Ash St, Springfield", "345-678-1234", "Software Tester", "IT");
+        EmployeeModel employee17 = new EmployeeModel(17, "Lucas Adams", "753 Cypress St, Springfield", "678-123-4560", "Procurement Officer", "Finance");
+        EmployeeModel employee18 = new EmployeeModel(18, "Mia Scott", "951 Mahogany St, Springfield", "901-456-7890", "Product Manager", "Operations");
+        EmployeeModel employee19 = new EmployeeModel(19, "Henry Carter", "357 Alder St, Springfield", "123-678-9014", "Data Analyst", "IT");
+        EmployeeModel employee20 = new EmployeeModel(20, "Olivia Evans", "753 Beech St, Springfield", "567-890-4567", "HR Assistant", "Human Resources");
+
+        // Add each employee to the database or list using addEmployeeData
+        addEmployeeData(employee1);
+        addEmployeeData(employee2);
+        addEmployeeData(employee3);
+        addEmployeeData(employee4);
+        addEmployeeData(employee5);
+        addEmployeeData(employee6);
+        addEmployeeData(employee7);
+        addEmployeeData(employee8);
+        addEmployeeData(employee9);
+        addEmployeeData(employee10);
+        addEmployeeData(employee11);
+        addEmployeeData(employee12);
+        addEmployeeData(employee13);
+        addEmployeeData(employee14);
+        addEmployeeData(employee15);
+        addEmployeeData(employee16);
+        addEmployeeData(employee17);
+        addEmployeeData(employee18);
+        addEmployeeData(employee19);
+        addEmployeeData(employee20);
+    }
     private void addEmployeeData(EmployeeModel employee) {
         employeeList.add(employee);
         //Table add
@@ -114,9 +162,14 @@ public class EmployeePage extends javax.swing.JFrame {
         fldAddEmpPosition = new javax.swing.JTextField();
         fldAddEmpDepartment = new javax.swing.JTextField();
         btnAddEmp = new javax.swing.JButton();
+        btnUpdateEMP = new javax.swing.JButton();
+        btnRemEmp = new javax.swing.JButton();
         lblRemEmpHead = new javax.swing.JLabel();
         fldRemEmpId = new javax.swing.JTextField();
-        btnRemEmp = new javax.swing.JButton();
+        sortcomboEmployees = new javax.swing.JComboBox<>();
+        fldSearchOrder = new javax.swing.JTextField();
+        lblSearchOrder = new javax.swing.JLabel();
+        lblSortByInventory = new javax.swing.JLabel();
         lblBgImg = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,18 +230,14 @@ public class EmployeePage extends javax.swing.JFrame {
 
         tblEmpMain.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null},
-                {null, null, null, null, null, null}
+
             },
             new String [] {
-                "Employee ID", "Name", "Position", "Department", "Contact", "Address"
+                "Employee ID", "Name", "Address", "Contact", "Department", "Position"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                true, false, false, false, false, true
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -200,13 +249,15 @@ public class EmployeePage extends javax.swing.JFrame {
             tblEmpMain.getColumnModel().getColumn(0).setResizable(false);
             tblEmpMain.getColumnModel().getColumn(1).setResizable(false);
             tblEmpMain.getColumnModel().getColumn(2).setResizable(false);
+            tblEmpMain.getColumnModel().getColumn(3).setResizable(false);
             tblEmpMain.getColumnModel().getColumn(4).setResizable(false);
+            tblEmpMain.getColumnModel().getColumn(5).setResizable(false);
         }
 
         pnlEmp.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 160, 760, 580));
 
         lblAddEmpHead.setFont(new java.awt.Font("Helvetica", 1, 30)); // NOI18N
-        lblAddEmpHead.setText("Add Employee");
+        lblAddEmpHead.setText("Add / Update Employee");
         pnlEmp.add(lblAddEmpHead, new org.netbeans.lib.awtextra.AbsoluteConstraints(960, 160, -1, -1));
 
         lblAddEmpID.setFont(new java.awt.Font("Helvetica", 1, 16)); // NOI18N
@@ -294,13 +345,35 @@ public class EmployeePage extends javax.swing.JFrame {
         btnAddEmp.setBackground(new java.awt.Color(51, 38, 35));
         btnAddEmp.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
         btnAddEmp.setForeground(new java.awt.Color(255, 255, 255));
-        btnAddEmp.setText("Submit");
+        btnAddEmp.setText("Add");
         btnAddEmp.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAddEmpActionPerformed(evt);
             }
         });
-        pnlEmp.add(btnAddEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 480, 150, 40));
+        pnlEmp.add(btnAddEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1000, 490, 80, 40));
+
+        btnUpdateEMP.setBackground(new java.awt.Color(51, 38, 35));
+        btnUpdateEMP.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
+        btnUpdateEMP.setForeground(new java.awt.Color(255, 255, 255));
+        btnUpdateEMP.setText("Update");
+        btnUpdateEMP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUpdateEMPActionPerformed(evt);
+            }
+        });
+        pnlEmp.add(btnUpdateEMP, new org.netbeans.lib.awtextra.AbsoluteConstraints(1110, 490, 110, 40));
+
+        btnRemEmp.setBackground(new java.awt.Color(51, 38, 35));
+        btnRemEmp.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
+        btnRemEmp.setForeground(new java.awt.Color(255, 255, 255));
+        btnRemEmp.setText("Submit");
+        btnRemEmp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnRemEmpActionPerformed(evt);
+            }
+        });
+        pnlEmp.add(btnRemEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1060, 660, 150, 40));
 
         lblRemEmpHead.setFont(new java.awt.Font("Helvetica", 1, 30)); // NOI18N
         lblRemEmpHead.setText("Remove Employee");
@@ -315,11 +388,30 @@ public class EmployeePage extends javax.swing.JFrame {
         });
         pnlEmp.add(fldRemEmpId, new org.netbeans.lib.awtextra.AbsoluteConstraints(1090, 610, 60, 30));
 
-        btnRemEmp.setBackground(new java.awt.Color(51, 38, 35));
-        btnRemEmp.setFont(new java.awt.Font("Helvetica", 1, 20)); // NOI18N
-        btnRemEmp.setForeground(new java.awt.Color(255, 255, 255));
-        btnRemEmp.setText("Submit");
-        pnlEmp.add(btnRemEmp, new org.netbeans.lib.awtextra.AbsoluteConstraints(1070, 670, 150, 40));
+        sortcomboEmployees.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--Select--", "Id", "Name", "Position" }));
+        sortcomboEmployees.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sortcomboEmployeesActionPerformed(evt);
+            }
+        });
+        pnlEmp.add(sortcomboEmployees, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 70, 150, -1));
+
+        fldSearchOrder.setFont(new java.awt.Font("Helvetica", 0, 16)); // NOI18N
+        fldSearchOrder.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        fldSearchOrder.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fldSearchOrderActionPerformed(evt);
+            }
+        });
+        pnlEmp.add(fldSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(1040, 100, 150, 30));
+
+        lblSearchOrder.setFont(new java.awt.Font("Helvetica", 1, 16)); // NOI18N
+        lblSearchOrder.setText("Search");
+        pnlEmp.add(lblSearchOrder, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 100, -1, 30));
+
+        lblSortByInventory.setFont(new java.awt.Font("Helvetica", 1, 16)); // NOI18N
+        lblSortByInventory.setText("Sort By");
+        pnlEmp.add(lblSortByInventory, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 70, -1, 30));
 
         lblBgImg.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/toysmanagement/resources/Background-Others.png"))); // NOI18N
         pnlEmp.add(lblBgImg, new org.netbeans.lib.awtextra.AbsoluteConstraints(-10, -10, 1380, 930));
@@ -398,25 +490,95 @@ public class EmployeePage extends javax.swing.JFrame {
     }//GEN-LAST:event_fldAddEmpIdActionPerformed
 
     private void btnAddEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAddEmpActionPerformed
-if (fldAddEmpId.getText().trim().isEmpty() || 
-    fldAddEmpName.getText().trim().isEmpty() || 
-    fldAddEmpAddress.getText().trim().isEmpty() || 
-    fldAddEmpContact.getText().trim().isEmpty() || 
-    fldAddEmpPosition.getText().trim().isEmpty() || 
-    fldAddEmpDepartment.getText().trim().isEmpty() ||
-    Integer.parseInt(fldAddEmpId.getText().trim()) == 0) {
-        JOptionPane.showMessageDialog(this,"Please Fill All the Values","Not Sucessful",JOptionPane.ERROR_MESSAGE);
-    }
-    else{
- if(createEmployeeModel()){
-        JOptionPane.showMessageDialog(this,"Student Added","Sucessful",JOptionPane.INFORMATION_MESSAGE);
-    }
-    else{
-         JOptionPane.showMessageDialog(this,"Student not Added","Not Sucessful",JOptionPane.ERROR_MESSAGE);
-    }
-    }        
-// TODO add your handling code here:
+        if (fldAddEmpId.getText().trim().isEmpty() ||
+            fldAddEmpName.getText().trim().isEmpty() ||
+            fldAddEmpAddress.getText().trim().isEmpty() ||
+            fldAddEmpContact.getText().trim().isEmpty() ||
+            fldAddEmpPosition.getText().trim().isEmpty() ||
+            fldAddEmpDepartment.getText().trim().isEmpty() ||
+            Integer.parseInt(fldAddEmpId.getText().trim()) == 0 ){
+
+            JOptionPane.showMessageDialog(this, "Please Fill All the Values", "Not Successful", JOptionPane.ERROR_MESSAGE);
+        } else {
+            if (createEmployeeModel()) {
+                JOptionPane.showMessageDialog(this, "Employee Added", "Successful", JOptionPane.INFORMATION_MESSAGE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Employee not Added", "Not Successful", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+
+        // TODO add your handling code here:
     }//GEN-LAST:event_btnAddEmpActionPerformed
+
+    private void btnUpdateEMPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateEMPActionPerformed
+        int empID = Integer.parseInt(fldAddEmpId.getText());
+        String Name = fldAddEmpName.getText();
+        String Address = fldAddEmpAddress.getText();
+        String Contact = fldAddEmpContact.getText();
+        String Position = fldAddEmpPosition.getText();
+        String Department = fldAddEmpDepartment.getText();
+
+        for(EmployeeModel product: employeeList ){
+            if(product.getEmpId() == empID){
+                product.setEmpId(empID);
+                product.setEmpName(Name);
+                product.setEmpAddress(Address);
+                product.setEmpContact(Contact);
+                product.setEmpPosition(Position);
+                product.setEmpDepartment(Department);
+                
+
+                loadEmployeeListToTable();
+
+                fldAddEmpId.setText("");
+                fldAddEmpName.setText("");
+                fldAddEmpAddress.setText("");
+                fldAddEmpContact.setText("");
+                fldAddEmpPosition.setText("");
+                fldAddEmpDepartment.setText("");
+
+                JOptionPane.showMessageDialog(this, "Product Updated", "Successful", JOptionPane.INFORMATION_MESSAGE);
+                return;
+            }
+
+        }
+
+        JOptionPane.showMessageDialog(this, "Product ID not found", "Failure", JOptionPane.INFORMATION_MESSAGE);
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnUpdateEMPActionPerformed
+
+    private void btnRemEmpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRemEmpActionPerformed
+        int employeeId = Integer.parseInt(fldRemEmpId.getText());
+        boolean isEmployeeFound = false;
+
+            for (EmployeeModel employee : employeeList) {
+                if (employee.getEmpId() == employeeId) {
+                    employeeList.remove(employee);
+                    loadEmployeeListToTable();
+                    JOptionPane.showMessageDialog(this, "Employee Removed", "Successful", JOptionPane.INFORMATION_MESSAGE);
+                    isEmployeeFound = true;
+                    break; // Exit the loop since the employee has been removed
+                     }
+                }
+
+                if (!isEmployeeFound) {
+                    JOptionPane.showMessageDialog(this, "Please enter a valid employee ID", "Failure", JOptionPane.INFORMATION_MESSAGE);
+                }
+
+        
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnRemEmpActionPerformed
+
+    private void sortcomboEmployeesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sortcomboEmployeesActionPerformed
+       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sortcomboEmployeesActionPerformed
+
+    private void fldSearchOrderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fldSearchOrderActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_fldSearchOrderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -485,6 +647,7 @@ if (fldAddEmpId.getText().trim().isEmpty() ||
     private javax.swing.JButton btnProducts;
     private javax.swing.JButton btnRemEmp;
     private javax.swing.JButton btnSuppliers;
+    private javax.swing.JButton btnUpdateEMP;
     private javax.swing.JTextField fldAddEmpAddress;
     private javax.swing.JTextField fldAddEmpContact;
     private javax.swing.JTextField fldAddEmpDepartment;
@@ -492,6 +655,7 @@ if (fldAddEmpId.getText().trim().isEmpty() ||
     private javax.swing.JTextField fldAddEmpName;
     private javax.swing.JTextField fldAddEmpPosition;
     private javax.swing.JTextField fldRemEmpId;
+    private javax.swing.JTextField fldSearchOrder;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblAddEmpAddress;
     private javax.swing.JLabel lblAddEmpContact;
@@ -504,7 +668,10 @@ if (fldAddEmpId.getText().trim().isEmpty() ||
     private javax.swing.JLabel lblEmpHead;
     private javax.swing.JLabel lblRemEmpHead;
     private javax.swing.JLabel lblRemEmpId;
+    private javax.swing.JLabel lblSearchOrder;
+    private javax.swing.JLabel lblSortByInventory;
     private javax.swing.JPanel pnlEmp;
+    private javax.swing.JComboBox<String> sortcomboEmployees;
     private javax.swing.JTable tblEmpMain;
     // End of variables declaration//GEN-END:variables
 }

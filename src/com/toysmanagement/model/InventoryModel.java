@@ -19,7 +19,7 @@ public class InventoryModel {
     private int invItemCpu;
     private int invItemTotalValue;
     
-    public InventoryModel(int invItemId, String invItemAame, String invItemCategory, int invItemStock, String invItemSupplier, int invItemCpu, int invItemTotalValue)
+    public InventoryModel(int invItemId, String invItemName, String invItemCategory, int invItemStock, String invItemSupplier, int invItemCpu, int invItemTotalValue)
     {
         this.invItemId=invItemId;
         this.invItemName=invItemName;

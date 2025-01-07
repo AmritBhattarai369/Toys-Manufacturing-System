@@ -34,7 +34,7 @@ public class EmployeeModel {
     {
         return empName;
     }
-    public void setName(String empName)
+    public void setEmpName(String empName)
     {
         this.empName=empName;
     }
@@ -42,7 +42,7 @@ public class EmployeeModel {
     {
         return empAddress;
     }
-    public void setAddress(String empAddress)
+    public void setEmpAddress(String empAddress)
     {
         this.empAddress=empAddress;
     }
